@@ -6,7 +6,9 @@ The re-design of the UK poll tracker, shown below can be reproduced with the scr
 
 - Instead of using "... the most recent poll from each pollster..." like the FT poll tracker, I use the last ten for simplicity.
 - I don't know how exactly the 
-- To create a weighted average, the FT is "...using an exponential decay formula...". 
+- To create a weighted average, the FT is "...using an exponential decay formula...".
+
+![alt text](https://github.com/BernhardClemm/ft-proposal/blob/output/uk-polltracker.png?raw=true)
 
 ## EP projections
 
