@@ -19,13 +19,13 @@ To assess the accuracy of the FT projections, I scraped, first, the total projec
 
 To get the mean absolute error of projected seats across party groups, run `code/ep-projections-acc.R`, specifically line under section "Mean absolute error on group level". The code also produces the following plot of error by party group
 
-<img src="https://github.com/BernhardClemm/ft-proposal/blob/main/output/ep-totals-accuracy.png?raw=true" width="75%">
+<img src="https://github.com/BernhardClemm/ft-proposal/blob/main/output/ep-totals-accuracy.png?raw=true" width="60%">
 
 ### Country level
 
 The same script also produces a plot of projection error at the country-party level:
 
-<img src="https://github.com/BernhardClemm/ft-proposal/blob/main/output/ep-countries-accuracy.png?raw=true" width="75%">
+<img src="https://github.com/BernhardClemm/ft-proposal/blob/main/output/ep-country-accuracy.png?raw=true" width="75%">
 
 ## Country-level poll tracker re-design
 
