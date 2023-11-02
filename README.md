@@ -2,7 +2,7 @@
 
 ## UK poll tracker
 
-The re-design of the UK poll tracker, shown below can be reproduced with the script `code/uk-polltracker.R`. The underlying data is from. [http://bertha.ig.ft.com/view/publish/dsv/1qDuVHfUgoWnPSUNUDeXLaHfV33RuAPsNC-S1S0tDeKI/data.csv][]. A few remarks about the code:  
+The re-design of the UK poll tracker, shown below can be reproduced with the script `code/uk-polltracker.R`. The underlying data is from the [FT page](http://bertha.ig.ft.com/view/publish/dsv/1qDuVHfUgoWnPSUNUDeXLaHfV33RuAPsNC-S1S0tDeKI/data.csv). A few remarks about the code:  
 
 - Instead of using "... the most recent poll from each pollster..." like the FT poll tracker, I use the last ten for simplicity.
 - I don't know how exactly the 
