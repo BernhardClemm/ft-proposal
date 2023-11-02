@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import csv
 import os
 
-os.chdir('/Users/bernhard/Dropbox/Bewerbungen/202310 FT/ft-application')
+os.chdir('')
 driver = webdriver.Firefox()
 
 # SCRAPING FUNCTION =============================================================
@@ -99,7 +99,7 @@ projections = scrape_ft(
 
 # export as csv
 keys = projections[0].keys()
-with open('./data/ft-ep-projections.csv', 'w') as output_file:
+with open('./data/ft-ep-countries-projections.csv', 'w') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(projections)
@@ -118,7 +118,7 @@ results = scrape_ft(
 
 # export as csv
 keys = results[0].keys()
-with open('./data/ft-ep-results.csv', 'w') as output_file:
+with open('./data/ft-ep-countries-results.csv', 'w') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(results)
