@@ -5,7 +5,7 @@
 The re-design of the UK poll tracker, shown below, can be reproduced with the script `code/uk-polltracker.R`. The underlying data is from the [FT page](http://bertha.ig.ft.com/view/publish/dsv/1qDuVHfUgoWnPSUNUDeXLaHfV33RuAPsNC-S1S0tDeKI/data.csv). A few remarks about the code:  
 
 - Instead of using "... the most recent poll from each pollster..." like the FT, I use the last 10 for simplicity.
-- The FT's exact recency weighting for the UK poll tracker is unknown. On the EP poll page, the methodology mentions "...using an exponential decay formula...", so I create recency weights with a daily exponential decay of 10%. 
+- The FT's exact recency weighting for the UK poll tracker is unknown. On the EP poll page, the methodology mentions "...using an exponential decay formula...", so I create recency weights with a daily exponential decay of an arbitrary 10%. 
 - To create the confidence band around the average trend line, I rely on the function `wtd.var` from the `HMisc` package. Note that the computation of variances for weighted average is complex, so this step could be reviewed and improved.
 
 <img src="https://github.com/BernhardClemm/ft-proposal/blob/main/output/uk-polltracker.png?raw=true" width="75%">
