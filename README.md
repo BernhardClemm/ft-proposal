@@ -8,7 +8,7 @@ The re-design of the UK poll tracker, shown below can be reproduced with the scr
 - I don't know how exactly the 
 - To create a weighted average, the FT is "...using an exponential decay formula...".
 
-![alt text](https://github.com/BernhardClemm/ft-proposal/blob/output/uk-polltracker.png?raw=true)
+![](https://github.com/BernhardClemm/ft-proposal/blob/main/output/uk-polltracker.png?raw=true)
 
 ## EP projections
 
