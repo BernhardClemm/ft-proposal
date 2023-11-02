@@ -1,5 +1,5 @@
 # ==============================================================================
-# file name: uk-polltracker.R
+# file name: uk-polltracker-plot.R
 # authors: Bernhard Clemm
 # date: 21 Jan 2023
 # ==============================================================================
@@ -8,7 +8,7 @@
 
 library(tidyverse)
 library(Hmisc)
-path <- paste0(dirname(rstudioapi::getSourceEditorContext()$path), "/")
+path <- paste0(dirname(dirname(rstudioapi::getSourceEditorContext()$path)), "/")
 
 # DATA =========================================================================
 
@@ -77,9 +77,9 @@ uk_polls_weights <- uk_polls_03 %>%
   # compute the difference in days to 5 previous polls
   mutate(lag_day_diff = as.numeric(mdate - lag_date)) %>%
   # create weight according to decay formula
-  mutate(lag_weight_raw = (1 - 0.10)^lag_day_diff) %>%
-  select(poll_id, mdate, house, lag, lag_weight_raw) %>%
-  pivot_wider(names_from = "lag", values_from = "lag_weight_raw") 
+  mutate(lag_weight = (1 - 0.10)^lag_day_diff) %>%
+  select(poll_id, mdate, house, lag, lag_weight) %>%
+  pivot_wider(names_from = "lag", values_from = "lag_weight") 
 
 ## join weights to polls ####
 
@@ -92,7 +92,7 @@ uk_polls_04 <- uk_polls_03 %>%
 ## there is some debate about how to compute SE of weighted mean:
 ## https://www.alexstephenson.me/post/2022-04-02-weighted-variance-in-r/
 ## https://seismo.berkeley.edu/~kirchner/Toolkits/Toolkit_12.pdf
-## I rely on the Hmisc functions, but the below can be improved in a number of ways
+## I rely on the Hmisc functions, but the below can be improved.
 
 uk_polls_05 <- uk_polls_04 %>% 
   mutate(
@@ -105,18 +105,18 @@ uk_polls_05 <- uk_polls_04 %>%
 
 # HOUSE WEIGHTS ================================================================
 
-## only for illustration purposes, create random house weights
+## only for illustration purposes, create random sample sizes
 ## these do not factor into computation of trend line
 
 uk_polls_06 <- uk_polls_05 %>% 
-  group_by(house) %>% mutate(house_weight = runif(1, 0, 0.1)) %>%
+  group_by(house) %>% mutate(sample_size = round(rnorm(1, 2500, 200))) %>%
   ungroup()
   
 # PLOT =========================================================================
 
 uk_polls_plot <- uk_polls_06 %>%
   filter(mdate > "2019-01-01") %>%
-  select(house, house_weight, mdate, percent, party, percent_mean, percent_se) %>%
+  select(house, sample_size, mdate, percent, party, percent_mean, percent_se) %>%
   mutate(across(percent_mean:percent_se, ~ ifelse(is.na(percent), NA, .))) %>%
   mutate(ci_low = percent_mean - 1.96*percent_se,
          ci_high = percent_mean + 1.96*percent_se)
@@ -127,8 +127,8 @@ names(colors) <- c("con", "lab", "lib", "snppc", "brx", "grn")
 
 uk_polls_plot %>% 
   ggplot(aes(x = mdate, y = percent, group = party, color = party)) +
-  geom_point(aes(size = house_weight), alpha = 0.4) + 
-  scale_size(range = c(0.1, 3)) +
+  geom_point(aes(size = sample_size), alpha = 0.4) + 
+  scale_size(range = c(0.05, 3)) +
   geom_line(aes(y = percent_mean), size = 1) + 
   geom_ribbon(aes(ymin = ci_low, ymax = ci_high, fill = party), alpha = 0.1, colour = NA) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b") +

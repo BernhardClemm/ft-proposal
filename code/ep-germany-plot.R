@@ -1,5 +1,5 @@
 # ==============================================================================
-# file name: ep-uncertainty-plot.R
+# file name: ep-germany-plot.R
 # authors: Bernhard Clemm
 # date: 1 Nov 2023
 # ==============================================================================
@@ -20,7 +20,7 @@ ep_proj_ger_00 <- read.csv(paste0(path, "data/ft-ep-projections-GER.csv"))
 ## create weights ####
 ## I do not know the FT weighting procedure for EP elections. For the US elections:
 ## "We calculate poll averages ... using an exponential decay formula..."
-## I assume a decay parameter r of 5% per day: raw_weight = (1 - 0.05)^n_days
+## I assume a decay parameter r of 10% per day: raw_weight = (1 - 0.10)^n_days
 ## I normalize these weights so they sum to 1
 ## (with more time, one could reverse-engineer the decay factor, 
 ## but difficult given the rounded numbers)
@@ -31,7 +31,7 @@ ep_proj_ger_01 <- ep_proj_ger_00 %>%
   mutate(date = as.Date(date, format = "%d/%m/%y"),
          last_date = as.Date("2019-05-23"),
          day_diff = as.numeric(last_date - date)) %>%
-  mutate(weight_raw = (1 - 0.05)^day_diff) %>%
+  mutate(weight_raw = (1 - 0.10)^day_diff) %>%
   mutate(sum_weights_raw = sum(weight_raw)) %>%
   mutate(weight = weight_raw / sum_weights_raw)
 
