@@ -39,6 +39,6 @@ The Germany polling data was collected manually from the [FT polling page](https
 
 ## US voter movements (Figure 2)
 
-The AP VoteCast can be downloaded [here](https://apnorc.org/projects/ap-votecast-2020-general-elections/) and not included in the repository because of size. The script `code/us-voter-movements.R` summarizes the data and creates the Sankey plot below.
+The AP VoteCast can be downloaded [here](https://apnorc.org/projects/ap-votecast-2020-general-elections/) and is not included in the repository because of size. The script `code/us-voter-movements.R` summarizes the data and creates the Sankey plot below.
 
 <img src="https://github.com/BernhardClemm/ft-proposal/blob/main/output/us-voter-movements.png?raw=true" width="75%">
