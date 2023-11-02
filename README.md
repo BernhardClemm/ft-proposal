@@ -8,7 +8,7 @@ The re-design of the UK poll tracker, shown below, can be reproduced with the sc
 - The FT's exact recency weighting for this poll tracker is unknow. On the EP projection page, the methodology mentions "...using an exponential decay formula...", so I create recency weights with a daily decay of 10%. 
 - To create the confidence band around the average trend line, I rely on the function `wtd.var` from the `HMisc` package. Note that the computation of variances for weighted average is complex, so this piece of could be reviewed and improved.
 
-<img src="[https://your-image-url.type](https://github.com/BernhardClemm/ft-proposal/blob/main/output/uk-polltracker.png?raw=true)" width="50" height="50">
+<img src="[https://your-image-url.type](https://github.com/BernhardClemm/ft-proposal/blob/main/output/uk-polltracker.png?raw=true)" width="75%">
 
 ## EP projections
 ### Testing projection accuracy
